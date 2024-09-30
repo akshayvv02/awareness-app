@@ -27,7 +27,7 @@ def create_app():
     if scheduler is None:
         logging.info('--------- Initializing scheduler ---------')
         scheduler = BackgroundScheduler()
-        scheduler.add_job(call_endpoint, 'interval', hours=1)  # Adjust the interval as needed
+        scheduler.add_job(call_endpoint, 'interval', seconds=3600)  # Adjust the interval as needed
         scheduler.start()
         logging.info('---------- Scheduler Set now ----------')
         
