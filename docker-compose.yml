@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  flask:
+    build: .
+    ports:
+      - "5001:5001"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=mypassword
+      - MYSQL_DATABASE=mydatabase
+    depends_on:
+      - mysql
+    volumes:
+      - ./data:/app/data  # Mount the data folder to the container
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./html:/usr/share/nginx/html # Mount the html directory to Nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - flask
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

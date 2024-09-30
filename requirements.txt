@@ -1,0 +1,11 @@
+Flask==2.2.3
+Werkzeug==2.2.3
+flask-mysqldb
+bcrypt
+pandas
+numpy
+requests
+Flask-HTTPAuth
+APScheduler
+pytz
+flask-cors

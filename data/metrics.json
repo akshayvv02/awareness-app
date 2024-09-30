@@ -1,0 +1,36 @@
+{
+    "total_participants": 1708,
+    "average_completion_rate": 88.0,
+    "completion_percentage": 90.65,
+    "inactive_participants": 163,
+    "enrollment_months": [
+        {
+            "month": "September",
+            "value": 518
+        },
+        {
+            "month": "August",
+            "value": 130
+        },
+        {
+            "month": "July",
+            "value": 215
+        },
+        {
+            "month": "June",
+            "value": 200
+        },
+        {
+            "month": "May",
+            "value": 520
+        },
+        {
+            "month": "April",
+            "value": 123
+        },
+        {
+            "month": "March",
+            "value": 2
+        }
+    ]
+}
